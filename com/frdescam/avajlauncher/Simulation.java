@@ -1,27 +1,36 @@
 package com.frdescam.avajlauncher;
 
 import java.io.File;
+import java.util.Map;
 
-public class Simulation {
+public class Simulation
+{
     
-    private static boolean checkScenarioFile(File scenarioFile) {
-        return true;
-    }
-
-    public static void main(String[] args) {
-        File scenarioFile;
+    public static void main(String[] args)
+    {
         Scenario scenario;
 
-        if (args.length != 1) {
+        if (args.length != 1)
+        {
             System.err.println("Error : Invalid number of arguments");
         }
 
-        scenarioFile = new File(args[0]);
+        File scenarioFile = new File(args[0]);
         
-        scenario.loadScenarioFile(scenarioFile);
+        try
+        {
+            scenario = new Scenario(scenarioFile);
+        }
+        catch (Exception e)
+        {
+            System.out.print("Error : ");
+            System.out.println(e);
+            System.exit(1);
+        }
 
-        if (!checkScenarioFile(scenarioFile)) {
-            System.err.println("Error : Invalid file");
+        for (Map<String, Object> aircraft : scenario.getAircrafts())
+        {
+
         }
     }
 }
