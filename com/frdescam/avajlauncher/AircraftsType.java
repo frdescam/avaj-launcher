@@ -1,6 +1,6 @@
 package com.frdescam.avajlauncher;
 
-public enum AircraftsTypes {
+public enum AircraftsType {
     HELICOPTER,
     JETPLANE,
     BALOON

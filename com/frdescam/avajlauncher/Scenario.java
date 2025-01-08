@@ -32,22 +32,22 @@ public class Scenario
             Map<String, Object> aircraft = new HashMap<>();
             switch (tokens[0]) {
                 case "Baloon":
-                    aircraft.put("type", AircraftsTypes.BALOON);
+                    aircraft.put("type", AircraftsType.BALOON);
                     break;
                 case "JetPlane":
-                    aircraft.put("type", AircraftsTypes.JETPLANE);
+                    aircraft.put("type", AircraftsType.JETPLANE);
                     break;
                 case "Helicopter":
-                    aircraft.put("type", AircraftsTypes.HELICOPTER);
+                    aircraft.put("type", AircraftsType.HELICOPTER);
                     break;
                 default:
                     break;
             }
 
             aircraft.put("name", tokens[1]);
-            aircraft.put("longitude", tokens[2]);
-            aircraft.put("latitude", tokens[3]);
-            aircraft.put("height", tokens[4]);
+            aircraft.put("longitude", Integer.parseInt(tokens[2]));
+            aircraft.put("latitude", Integer.parseInt(tokens[3]));
+            aircraft.put("height", Integer.parseInt(tokens[4]));
 
             this.aircrafts.add(aircraft);
         }
