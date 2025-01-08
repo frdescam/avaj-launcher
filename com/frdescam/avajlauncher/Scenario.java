@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.frdescam.avajlauncher.flyables.AircraftsType;
+
 public class Scenario
 {
-    int nbSimulationIterations;
-    List<Map<String, Object>> aircrafts = new ArrayList<>();
+    private int nbSimulationIterations;
+    private List<Map<String, Object>> aircrafts = new ArrayList<>();
 
-    // TODO : Handle errors in constuctor
     public Scenario(File scenarioFile) throws FileNotFoundException, NumberFormatException
     {
         Scanner fileReader = new Scanner(scenarioFile);
@@ -30,20 +31,8 @@ public class Scenario
             String[] tokens = line.split(" ");
 
             Map<String, Object> aircraft = new HashMap<>();
-            switch (tokens[0]) {
-                case "Baloon":
-                    aircraft.put("type", AircraftsType.BALOON);
-                    break;
-                case "JetPlane":
-                    aircraft.put("type", AircraftsType.JETPLANE);
-                    break;
-                case "Helicopter":
-                    aircraft.put("type", AircraftsType.HELICOPTER);
-                    break;
-                default:
-                    break;
-            }
 
+            aircraft.put("type", AircraftsType.fromString(tokens[0]));
             aircraft.put("name", tokens[1]);
             aircraft.put("longitude", Integer.parseInt(tokens[2]));
             aircraft.put("latitude", Integer.parseInt(tokens[3]));

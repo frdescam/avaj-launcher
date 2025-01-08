@@ -8,6 +8,10 @@ public class WeatherTower extends Tower {
         return "";
     }
 
+    public Weather getEnumWeather(Coordinates p_coordinates) {
+        return Weather.FOG;
+    }
+
     public void changeWeather() {
 
     }

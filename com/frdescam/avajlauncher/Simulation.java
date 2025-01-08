@@ -1,22 +1,24 @@
 package com.frdescam.avajlauncher;
 
-import java.io.Console;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.frdescam.avajlauncher.flyables.Aircraft;
-import com.frdescam.avajlauncher.flyables.Baloon;
-import com.frdescam.avajlauncher.flyables.Helicopter;
-import com.frdescam.avajlauncher.flyables.JetPlane;
+import com.frdescam.avajlauncher.flyables.AircraftFactory;
+import com.frdescam.avajlauncher.flyables.AircraftsType;
+import com.frdescam.avajlauncher.flyables.Flyable;
+import com.frdescam.avajlauncher.towers.Tower;
+import com.frdescam.avajlauncher.towers.WeatherTower;
 
 public class Simulation
 {
     public static void main(String[] args)
     {
-        List<Aircraft> aircrafts = new ArrayList<>();
         Scenario scenario = null;
+
+        List<Flyable> flyables = new ArrayList<>();
+        Tower weatherTower = new WeatherTower();
 
         if (args.length != 1)
         {
@@ -36,7 +38,6 @@ public class Simulation
             System.exit(1);
         }
 
-        int aircraftId = 0;
         for (Map<String, Object> scenarioAircraft : scenario.getAircrafts())
         {
             AircraftsType aircraftType = (AircraftsType)scenarioAircraft.get("type");
@@ -46,23 +47,11 @@ public class Simulation
             int aircraftHeight = (int)scenarioAircraft.get("height");
             Coordinates aircraftCoordinates = new Coordinates(aircraftLongitude, aircraftLatitude, aircraftHeight);
 
-
-            switch (aircraftType) {
-                case BALOON:
-                    Baloon newBaloon = new Baloon(aircraftId, aircraftName, aircraftCoordinates);
-                    aircrafts.add(newBaloon);
-                    break;
-                case JETPLANE:
-                    JetPlane newJetPlane = new JetPlane(aircraftId, aircraftName, aircraftCoordinates);
-                    aircrafts.add(newJetPlane);
-                    break;
-                case HELICOPTER:
-                Helicopter newHelicopter = new Helicopter(aircraftId, aircraftName, aircraftCoordinates);
-                    aircrafts.add(newHelicopter);
-                    break;
-            }
-            aircraftId++;
+            Flyable newFlyable = AircraftFactory.getInstance().newAircraft(aircraftType, aircraftName, aircraftCoordinates);
+            flyables.add(newFlyable);
         }
+
+
         System.out.println("Finished");
     }
 }

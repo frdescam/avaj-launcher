@@ -1,10 +1,13 @@
 package com.frdescam.avajlauncher;
 
+import com.frdescam.avajlauncher.towers.Weather;
+
 public class WeatherProvider {
 
     private static WeatherProvider INSTANCE;
 
     private String[] weather;
+    private Weather[] enumWeather;
 
     private WeatherProvider() {
         /* NOP */
@@ -18,6 +21,10 @@ public class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates coordinates) {
-        return null;
+        return "";
+    }
+
+    public Weather getCurrentEnumWeather(Coordinates coordinates) {
+        return Weather.FOG;
     }
 }
