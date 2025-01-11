@@ -8,7 +8,6 @@ import java.util.Map;
 import com.frdescam.avajlauncher.flyables.AircraftFactory;
 import com.frdescam.avajlauncher.flyables.AircraftsType;
 import com.frdescam.avajlauncher.flyables.Flyable;
-import com.frdescam.avajlauncher.towers.Tower;
 import com.frdescam.avajlauncher.towers.WeatherTower;
 
 public class Simulation
@@ -18,7 +17,7 @@ public class Simulation
         Scenario scenario = null;
 
         List<Flyable> flyables = new ArrayList<>();
-        Tower weatherTower = new WeatherTower();
+        WeatherTower weatherTower = new WeatherTower();
 
         if (args.length != 1)
         {
@@ -50,8 +49,8 @@ public class Simulation
 
             Flyable newFlyable = AircraftFactory.getInstance().newAircraft(aircraftType, aircraftName, aircraftCoordinates);
             flyables.add(newFlyable);
+            newFlyable.registerTower(weatherTower);
         }
-
 
         System.out.println("Finished");
     }

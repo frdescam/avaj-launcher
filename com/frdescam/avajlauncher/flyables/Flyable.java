@@ -10,5 +10,6 @@ public abstract class Flyable {
 
     public void registerTower(WeatherTower tower) {
         this.weatherTower = tower;
+        this.weatherTower.register(this);
     }
 }

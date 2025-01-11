@@ -5,7 +5,7 @@ import com.frdescam.avajlauncher.Coordinates;
 public class AircraftFactory {
 
     private static AircraftFactory INSTANCE;
-    private int aircraftId = 0;
+    private int aircraftId = 1;
 
     private AircraftFactory() {
         /* NOP */
@@ -29,10 +29,13 @@ public class AircraftFactory {
         switch (type) {
             case BALOON:
                 newFlyable = new Baloon(this.aircraftId, name, coordinates);
+                break;
             case JETPLANE:
                 newFlyable = new JetPlane(this.aircraftId, name, coordinates);
+                break;
             case HELICOPTER:
                 newFlyable = new Helicopter(this.aircraftId, name, coordinates);
+                break;
         };
 
         if (newFlyable != null)
