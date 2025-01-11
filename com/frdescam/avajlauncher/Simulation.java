@@ -23,6 +23,7 @@ public class Simulation
         if (args.length != 1)
         {
             System.err.println("Error : Invalid number of arguments");
+            System.exit(1);
         }
 
         File scenarioFile = new File(args[0]);
