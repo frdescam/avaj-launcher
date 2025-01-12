@@ -38,6 +38,8 @@ public class Simulation
             System.exit(1);
         }
 
+        Logger.getInstance().log("===== Initializing simulation =====");
+
         for (Map<String, Object> scenarioAircraft : scenario.getAircrafts())
         {
             AircraftsType aircraftType = (AircraftsType)scenarioAircraft.get("type");
@@ -52,10 +54,15 @@ public class Simulation
             newFlyable.registerTower(weatherTower);
         }
 
+        Logger.getInstance().log("===== Starting simulation =====");
+
         for (int i = 0; i < scenario.getNbSimulationIterations(); i++)
         {
+            Logger.getInstance().log("===== Simulation Round " + (i + 1) + " =====");
             weatherTower.changeWeather();
         }
+
+        Logger.getInstance().log("===== End of the simulation =====");
 
         Logger.getInstance().writeLogFile();
     }
