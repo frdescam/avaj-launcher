@@ -1,6 +1,8 @@
 package com.frdescam.avajlauncher.flyables;
 
 import com.frdescam.avajlauncher.Coordinates;
+import com.frdescam.avajlauncher.Logger;
+import com.frdescam.avajlauncher.Utils;
 import com.frdescam.avajlauncher.towers.Weather;
 
 public class Baloon extends Aircraft {
@@ -16,6 +18,12 @@ public class Baloon extends Aircraft {
         switch (weather) {
             case RAIN:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": Damn you rain! You messed up my baloon.");
+                Logger.getInstance().log(broadcastMessage);
+
                 int height = this.coordinates.getHeight();
                 height -= 5;
                 height = Math.max(height, 0);
@@ -31,6 +39,12 @@ public class Baloon extends Aircraft {
             }
             case FOG:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": Damn you fog! You messed up my baloon.");
+                Logger.getInstance().log(broadcastMessage);
+
                 int height = this.coordinates.getHeight();
                 height -= 3;
                 height = Math.max(height, 0);
@@ -46,6 +60,12 @@ public class Baloon extends Aircraft {
             }
             case SUN:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": Let's enjoy the good weather and take some pics.");
+                Logger.getInstance().log(broadcastMessage);
+
                 int height = this.coordinates.getHeight();
                 height += 4;
                 height = Math.min(height, 100);
@@ -59,6 +79,12 @@ public class Baloon extends Aircraft {
             }
             case SNOW:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": : It's snowing. We're gonna crash.");
+                Logger.getInstance().log(broadcastMessage);
+                
                 int height = this.coordinates.getHeight();
                 height -= 15;
                 height = Math.max(height, 0);
@@ -69,7 +95,7 @@ public class Baloon extends Aircraft {
                     this.land();
                     this.unregisterTower();
                 }
-
+                
                 break;
             }
         }

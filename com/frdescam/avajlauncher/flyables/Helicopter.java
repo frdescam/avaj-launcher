@@ -1,6 +1,8 @@
 package com.frdescam.avajlauncher.flyables;
 
 import com.frdescam.avajlauncher.Coordinates;
+import com.frdescam.avajlauncher.Logger;
+import com.frdescam.avajlauncher.Utils;
 import com.frdescam.avajlauncher.towers.Weather;
 
 public class Helicopter extends Aircraft {
@@ -15,6 +17,12 @@ public class Helicopter extends Aircraft {
         switch (weather) {
             case RAIN:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": Damn you rain! You messed up my helicopter.");
+                Logger.getInstance().log(broadcastMessage);
+                
                 int longitude = this.coordinates.getLongitude();
                 longitude += 5;
                 longitude = Math.min(longitude, 100);
@@ -24,6 +32,12 @@ public class Helicopter extends Aircraft {
             }
             case FOG:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": Damn you fog! You messed up my helicopter.");
+                Logger.getInstance().log(broadcastMessage);
+
                 int latitude = this.coordinates.getLatitude();
                 latitude += 1;
                 latitude = Math.min(latitude, 100);
@@ -33,6 +47,12 @@ public class Helicopter extends Aircraft {
             }
             case SUN:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": This is hot.");
+                Logger.getInstance().log(broadcastMessage);
+
                 int height = this.coordinates.getHeight();
                 height += 2;
                 height = Math.min(height, 100);
@@ -46,6 +66,12 @@ public class Helicopter extends Aircraft {
             }
             case SNOW:
             {
+                StringBuilder flyablePrefix = Utils.getFlyablePrefix(this);
+                StringBuilder broadcastMessage = new StringBuilder();
+                broadcastMessage.append(flyablePrefix);
+                broadcastMessage.append(": My rotor is going to freeze!");
+                Logger.getInstance().log(broadcastMessage);
+
                 int height = this.coordinates.getHeight();
                 height -= 7;
                 height = Math.max(height, 0);

@@ -52,6 +52,11 @@ public class Simulation
             newFlyable.registerTower(weatherTower);
         }
 
-        System.out.println("Finished");
+        for (int i = 0; i < scenario.getNbSimulationIterations(); i++)
+        {
+            weatherTower.changeWeather();
+        }
+
+        Logger.getInstance().writeLogFile();
     }
 }

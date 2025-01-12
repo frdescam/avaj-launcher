@@ -11,22 +11,27 @@ public class AircraftFactory {
         /* NOP */
     }
 
-    public static AircraftFactory getInstance() {
-        if (INSTANCE == null) {
+    public static AircraftFactory getInstance()
+    {
+        if (INSTANCE == null)
+        {
             INSTANCE = new AircraftFactory();
         }
         return INSTANCE;
     }
 
-    public Flyable newAircraft(String type, String name, Coordinates coordinates) {
+    public Flyable newAircraft(String type, String name, Coordinates coordinates)
+    {
         AircraftsType aircraftsType = AircraftsType.fromString(type);
         return this.newAircraft(aircraftsType, name, coordinates);
     }
 
-    public Flyable newAircraft(AircraftsType type, String name, Coordinates coordinates) {
+    public Flyable newAircraft(AircraftsType type, String name, Coordinates coordinates)
+    {
         Flyable newFlyable = null;
 
-        switch (type) {
+        switch (type)
+        {
             case BALOON:
                 newFlyable = new Baloon(this.aircraftId, name, coordinates);
                 break;

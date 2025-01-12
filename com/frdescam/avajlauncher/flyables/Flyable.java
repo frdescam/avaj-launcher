@@ -1,5 +1,6 @@
 package com.frdescam.avajlauncher.flyables;
 
+import com.frdescam.avajlauncher.Logger;
 import com.frdescam.avajlauncher.Utils;
 import com.frdescam.avajlauncher.towers.WeatherTower;
 
@@ -35,6 +36,6 @@ public abstract class Flyable {
         broadcastMessage.append(flyablePrefix);
         broadcastMessage.append(" landing.");
 
-        System.out.println(broadcastMessage);
+        Logger.getInstance().log(broadcastMessage);
     }
 }
