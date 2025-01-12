@@ -12,6 +12,11 @@ public class Aircraft extends Flyable {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
+
+        if (this.coordinates.getHeight() > 100)
+        {
+            this.coordinates.setHeight(100);
+        }
     }
     
     public long getId() {
