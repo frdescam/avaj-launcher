@@ -18,54 +18,60 @@ public class Tower {
         observers = new LinkedList<>();
     }
 
+    private StringBuilder getBroadcastMessagePrefix(Flyable flyable)
+    {
+        StringBuilder broadcastMessage = new StringBuilder("Tower says: ");
+
+        if (flyable instanceof Baloon)
+        {
+            broadcastMessage.append("Baloon");
+        }
+        else if (flyable instanceof Helicopter)
+        {
+            broadcastMessage.append("Helicoper");
+        }
+        else if (flyable instanceof JetPlane)
+        {
+            broadcastMessage.append("JetPlane");
+        }
+        else
+        {
+            broadcastMessage.append("Unknown type");
+        }
+
+        broadcastMessage.append("#");
+        try {
+            Method getName = flyable.getClass().getMethod("getName");
+            String flyableName = (String)getName.invoke(flyable);
+
+            broadcastMessage.append(flyableName);
+        }
+        catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException e)
+        {
+            broadcastMessage.append("unknown name");
+        }
+
+        broadcastMessage.append("(");
+        try {
+            Method getId = flyable.getClass().getMethod("getId");
+            long flyableId = (long)getId.invoke(flyable);
+            
+            broadcastMessage.append(flyableId);
+        }
+        catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException e)
+        {
+            broadcastMessage.append("unknown id");
+        }
+        broadcastMessage.append(")");
+
+        return broadcastMessage;
+    }
+
     public void register(Flyable flyable) {
         if (!observers.contains(flyable)) {
             observers.add(flyable);
 
-            StringBuilder broadcastMessage = new StringBuilder("Tower says: ");
-
-            if (flyable instanceof Baloon)
-            {
-                broadcastMessage.append("Baloon");
-            }
-            else if (flyable instanceof Helicopter)
-            {
-                broadcastMessage.append("Helicoper");
-            }
-            else if (flyable instanceof JetPlane)
-            {
-                broadcastMessage.append("JetPlane");
-            }
-            else
-            {
-                broadcastMessage.append("Unknown type");
-            }
-
-            broadcastMessage.append("#");
-            try {
-                Method getName = flyable.getClass().getMethod("getName");
-                String flyableName = (String)getName.invoke(flyable);
-
-                broadcastMessage.append(flyableName);
-            }
-            catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException e)
-            {
-                broadcastMessage.append("unknown name");
-            }
-
-            broadcastMessage.append("(");
-            try {
-                Method getId = flyable.getClass().getMethod("getId");
-                long flyableId = (long)getId.invoke(flyable);
-                
-                broadcastMessage.append(flyableId);
-            }
-            catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | SecurityException e)
-            {
-                broadcastMessage.append("unknown id");
-            }
-            broadcastMessage.append(")");
-
+            StringBuilder broadcastMessage = getBroadcastMessagePrefix(flyable);
             broadcastMessage.append(" registered to weather tower.");
 
             System.out.println(broadcastMessage);
@@ -74,6 +80,11 @@ public class Tower {
 
     public void unregister(Flyable flyable) {
         observers.remove(flyable);
+
+        StringBuilder broadcastMessage = getBroadcastMessagePrefix(flyable);
+        broadcastMessage.append(" unregistered to weather tower.");
+
+        System.out.println(broadcastMessage);
     }
 
     protected void conditionChanged() {

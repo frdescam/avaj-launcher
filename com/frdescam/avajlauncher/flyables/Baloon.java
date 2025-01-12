@@ -23,7 +23,8 @@ public class Baloon extends Aircraft {
 
                 if (this.coordinates.getHeight() == 0)
                 {
-                    // TODO
+                    // TODO land
+                    this.unregisterTower();
                 }
 
                 break;
@@ -37,7 +38,8 @@ public class Baloon extends Aircraft {
 
                 if (this.coordinates.getHeight() == 0)
                 {
-                    // TODO
+                    // TODO land
+                    this.unregisterTower();
                 }
 
                 break;
@@ -64,7 +66,8 @@ public class Baloon extends Aircraft {
 
                 if (this.coordinates.getHeight() == 0)
                 {
-                    // TODO
+                    // TODO land
+                    this.unregisterTower();
                 }
 
                 break;
