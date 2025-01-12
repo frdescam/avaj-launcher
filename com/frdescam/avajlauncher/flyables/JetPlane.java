@@ -53,7 +53,8 @@ public class JetPlane extends Aircraft {
 
                 if (this.coordinates.getHeight() == 0)
                 {
-                    // TODO
+                    this.land();
+                    this.unregisterTower();
                 }
 
                 break;

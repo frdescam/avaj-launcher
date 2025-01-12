@@ -53,7 +53,8 @@ public class Helicopter extends Aircraft {
 
                 if (this.coordinates.getHeight() == 0)
                 {
-                    // TODO
+                    this.unregisterTower();
+                    this.land();
                 }
 
                 break;
