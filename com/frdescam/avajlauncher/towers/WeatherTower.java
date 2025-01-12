@@ -1,19 +1,20 @@
 package com.frdescam.avajlauncher.towers;
 
 import com.frdescam.avajlauncher.Coordinates;
+import com.frdescam.avajlauncher.WeatherProvider;
 
 public class WeatherTower extends Tower {
 
     public String getWeather(Coordinates p_coordinates) {
-        return "";
+        return WeatherProvider.getInstance().getCurrentWeather(p_coordinates);
     }
 
     public Weather getEnumWeather(Coordinates p_coordinates) {
-        return Weather.FOG;
+        return WeatherProvider.getInstance().getCurrentEnumWeather(p_coordinates);
     }
 
     public void changeWeather() {
-        // Do change weather
+        WeatherProvider.getInstance().changeWeather();
         this.conditionChanged();
     }
 }
