@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.frdescam.avajlauncher.exceptions.CannotWriteSimulationFileException;
+import com.frdescam.avajlauncher.exceptions.InvalidScenarioFileException;
+import com.frdescam.avajlauncher.exceptions.ScenarioFileNotFoundException;
 import com.frdescam.avajlauncher.flyables.AircraftFactory;
 import com.frdescam.avajlauncher.flyables.AircraftsType;
 import com.frdescam.avajlauncher.flyables.Flyable;
@@ -25,16 +28,14 @@ public class Simulation
             System.exit(1);
         }
 
-        File scenarioFile = new File(args[0]);
-        
         try
         {
+            File scenarioFile = new File(args[0]);
             scenario = new Scenario(scenarioFile);
         }
-        catch (Exception e)
+        catch (ScenarioFileNotFoundException | InvalidScenarioFileException e)
         {
-            System.out.print("Error : ");
-            System.out.println(e);
+            System.out.println(e.getMessage());
             System.exit(1);
         }
 
@@ -64,6 +65,20 @@ public class Simulation
 
         Logger.getInstance().log("===== End of the simulation =====");
 
-        Logger.getInstance().writeLogFile();
+
+        try
+        {
+            Logger.getInstance().writeLogFile();
+        }
+        catch (CannotWriteSimulationFileException e )
+        {
+            System.err.println(e.getMessage());
+            System.out.println("Printing on stdout :\n");
+
+            String logs = Logger.getInstance().getSimulationLogs();
+            System.out.println(logs);
+
+            System.exit(1);
+        }
     }
 }

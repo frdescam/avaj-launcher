@@ -3,6 +3,8 @@ package com.frdescam.avajlauncher;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.frdescam.avajlauncher.exceptions.CannotWriteSimulationFileException;
+
 public class Logger {
 
     private static Logger INSTANCE;
@@ -35,7 +37,7 @@ public class Logger {
         simulationLogs.append("\n");
     }
 
-    public void writeLogFile()
+    public void writeLogFile() throws CannotWriteSimulationFileException
     {
         FileWriter logFile;
 
@@ -47,7 +49,12 @@ public class Logger {
         }
         catch (IOException e)
         {
-            System.err.println("Error writing output file");
+            throw new CannotWriteSimulationFileException();
         }
+    }
+
+    public String getSimulationLogs()
+    {
+        return this.simulationLogs.toString();
     }
 }
