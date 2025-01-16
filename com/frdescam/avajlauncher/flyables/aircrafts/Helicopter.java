@@ -1,8 +1,9 @@
-package com.frdescam.avajlauncher.flyables;
+package com.frdescam.avajlauncher.flyables.aircrafts;
 
 import com.frdescam.avajlauncher.Coordinates;
 import com.frdescam.avajlauncher.Logger;
 import com.frdescam.avajlauncher.Utils;
+import com.frdescam.avajlauncher.flyables.Aircraft;
 import com.frdescam.avajlauncher.towers.Weather;
 
 public class Helicopter extends Aircraft {

@@ -2,10 +2,10 @@ package com.frdescam.avajlauncher;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import com.frdescam.avajlauncher.flyables.Baloon;
 import com.frdescam.avajlauncher.flyables.Flyable;
-import com.frdescam.avajlauncher.flyables.Helicopter;
-import com.frdescam.avajlauncher.flyables.JetPlane;
+import com.frdescam.avajlauncher.flyables.aircrafts.Baloon;
+import com.frdescam.avajlauncher.flyables.aircrafts.Helicopter;
+import com.frdescam.avajlauncher.flyables.aircrafts.JetPlane;
 
 public class Utils {
     public static StringBuilder getFlyablePrefix(Flyable flyable)

@@ -1,6 +1,9 @@
 package com.frdescam.avajlauncher.flyables;
 
 import com.frdescam.avajlauncher.Coordinates;
+import com.frdescam.avajlauncher.flyables.aircrafts.Baloon;
+import com.frdescam.avajlauncher.flyables.aircrafts.Helicopter;
+import com.frdescam.avajlauncher.flyables.aircrafts.JetPlane;
 
 public class AircraftFactory {
 
