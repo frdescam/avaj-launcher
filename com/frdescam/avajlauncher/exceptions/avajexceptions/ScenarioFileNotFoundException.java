@@ -1,4 +1,6 @@
-package com.frdescam.avajlauncher.exceptions;
+package com.frdescam.avajlauncher.exceptions.avajexceptions;
+
+import com.frdescam.avajlauncher.exceptions.AvajException;
 
 public class ScenarioFileNotFoundException extends AvajException
 {

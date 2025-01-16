@@ -3,7 +3,7 @@ package com.frdescam.avajlauncher;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.frdescam.avajlauncher.exceptions.CannotWriteSimulationFileException;
+import com.frdescam.avajlauncher.exceptions.avajexceptions.CannotWriteSimulationFileException;
 
 public class Logger {
 

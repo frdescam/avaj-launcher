@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.frdescam.avajlauncher.exceptions.InvalidScenarioFileException;
-import com.frdescam.avajlauncher.exceptions.ScenarioFileNotFoundException;
+import com.frdescam.avajlauncher.exceptions.avajexceptions.ScenarioFileNotFoundException;
+import com.frdescam.avajlauncher.exceptions.avajexceptions.InvalidScenarioFileException;
 import com.frdescam.avajlauncher.flyables.AircraftsType;
 
 public class Scenario
