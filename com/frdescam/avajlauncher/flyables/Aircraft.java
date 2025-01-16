@@ -38,8 +38,6 @@ public class Aircraft extends Flyable {
 
     @Override
     public void updateConditions() {
-        // TODO
-        throw new UnsupportedOperationException("Unimplemented method 'updateConditions'");
+        /* NOP */
     }
-
 }
