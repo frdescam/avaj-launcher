@@ -8,6 +8,7 @@ import java.util.Map;
 import com.frdescam.avajlauncher.exceptions.avajexceptions.CannotWriteSimulationFileException;
 import com.frdescam.avajlauncher.exceptions.avajexceptions.ScenarioFileNotFoundException;
 import com.frdescam.avajlauncher.exceptions.avajexceptions.InvalidScenarioFileException;
+import com.frdescam.avajlauncher.flyables.Aircraft;
 import com.frdescam.avajlauncher.flyables.AircraftFactory;
 import com.frdescam.avajlauncher.flyables.AircraftsType;
 import com.frdescam.avajlauncher.flyables.Flyable;
@@ -52,7 +53,10 @@ public class Simulation
 
             Flyable newFlyable = AircraftFactory.getInstance().newAircraft(aircraftType, aircraftName, aircraftCoordinates);
             flyables.add(newFlyable);
-            newFlyable.registerTower(weatherTower);
+            if (((Aircraft)newFlyable).getCoordinates().getHeight() != 0)
+            {
+                newFlyable.registerTower(weatherTower);
+            }
         }
 
         Logger.getInstance().log("===== Starting simulation =====");

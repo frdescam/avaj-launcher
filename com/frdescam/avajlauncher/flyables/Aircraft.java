@@ -17,6 +17,11 @@ public class Aircraft extends Flyable {
         {
             this.coordinates.setHeight(100);
         }
+
+        if (this.coordinates.getHeight() <= 0)
+        {
+            this.coordinates.setHeight(0);
+        }
     }
     
     public long getId() {
@@ -33,6 +38,7 @@ public class Aircraft extends Flyable {
 
     @Override
     public void updateConditions() {
+        // TODO
         throw new UnsupportedOperationException("Unimplemented method 'updateConditions'");
     }
 

@@ -25,7 +25,7 @@ public class WeatherProvider {
     {
      
         java.util.Random random = new java.util.Random();
-        double[][][] numericMap = new double[1000][1000][100];
+        double[][][] numericMap = new double[100][100][100];
 
         for (int x = 0; x < 100; x++)
         {
@@ -122,8 +122,8 @@ public class WeatherProvider {
     }
 
     public Weather getCurrentEnumWeather(Coordinates coordinates) {
-        int x = coordinates.getLatitude() % 100;
-        int y = coordinates.getLongitude() % 100;
+        int x = Math.floorMod(coordinates.getLatitude(), 100);
+        int y = Math.floorMod(coordinates.getLongitude(), 100);
         int z = coordinates.getHeight() - 1;
         return weatherMap[x][y][z];
     }
